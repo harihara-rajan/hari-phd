@@ -1,0 +1,43 @@
+[tool.poetry]
+package-mode = false
+name = "hari-phd"
+version = "0.1.0"
+authors = ["DTU Wind and Energy Systems"]
+maintainers = [
+    "Hari <hrara@dtu.dk>"
+]
+[tool.poetry.dependencies]
+python = ">=3.11, <3.12"
+numpy = ">1.20.0"
+matplotlib = "^3.7.0"
+spyder-kernels = { version = ">=2.4.0", optional=true }  # Needed to use Spyder.
+PyQt5 = { version = ">=5.0.0", optional=true }  # Needed to plot with Spyder in an interactive window.
+PySide2 = { version = ">=5.0.0", optional=true }  # Needed to plot with Spyder in an interactive window.
+black = { version = "*", optional=true }
+flake8 = { version = "*", optional=true }
+isort = { version = "*", optional=true }
+wind-farm-loads = { version = "0.19.0"}
+py-wake = {version = "2.6.13"}
+pandas = {version = "2.3.3"}
+[tool.poetry.extras]
+code_style = ["black",
+              "flake8",
+	          "isort",
+			  ]
+
+spyder = ["spyder-kernels",
+          # These two packages do not work with Poetry.
+          # Use pip if needed.
+          # "PyQt5",
+          # "PySide2",
+          ]
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
